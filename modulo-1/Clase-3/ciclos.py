@@ -33,28 +33,66 @@ print(f"\nLa suma total es: {suma}\n")
 
 #ejemplo2
 
-saldo=5000
+saldo = 5.000
+
+historial = []
+
+clave = "1234"
 
 while True:
-    print("\n--------MENU---------")
-    print("1. ver Saldo")
-    print("2. retirar dinero")
-    print("3. salir")
+    print("\n ----MENU----")
+    print("1. Ver Saldo")
+    print("2. Retirar Dinero")
+    print("3. Depositar Dinero")
+    print("4. Ver historial de movimientos")
+    print("5. Cambiar clave")
+    print("6. Salir")
     
-    option = int (input("->Digita la opcion: "))
+    opcion = int(input("Digite la opcion: "))
     
-    if option == 1:
-        print(f"tu saldo es de {saldo}$")
-    elif option == 2:
-        retiro = float(input("\nIngresa por favor la cantidad a retirar: "))
-        if saldo >= retiro:
-            saldo -= retiro
-            print("Has retirado exitosamente!!!")
+    if opcion == 1:
+        print(f"su saldo actual es: {saldo:.3f}")
+    elif opcion == 2:
+        monto = float(input("cuanto deseas retirar? "))
+        if monto <= saldo:
+            saldo -= monto
+            historial.append(f"Retiraste {monto:.3f}")
+            
+            print(f"Retiro exitoso. Saldo restante ${saldo:.3f}")
         else:
-            print("ups... Parece que no tienes suficiente dinero para retirar")
-    elif option == 3:
-        print("\nGracias por usar nuestro servicio")
+            print("Saldo insuficiente")
+            
+    elif opcion == 3:
+        monto = float(input("Cuanto quieres depositar? "))
+        if monto > 0:
+            saldo += monto 
+            historial.append(f"Depositaste {monto:.3f}")
+            print(f"Deposito exitoso el nuevo saldo es: {saldo:.3f}")
+        else:
+            print("No puedes depositar montos negativos")
+            
+    elif opcion ==4:
+        print("Historial")
+        if len(historial) == 0:
+            print("No tienes movimientos")
+        else:
+            for movimiento in historial:
+                print(movimiento)
+        
+    elif opcion ==5:
+        intento = input("Escribe tu clave actual: ")
+        if intento == clave:
+            nueva = input("Digita tu nueva clave: ")
+            clave = nueva 
+            print("Tu clave a sido cambiada con exito ")
+            
+        else:
+            print("Clave incorrecta. ")
+    
+            
+            
+    elif opcion == 6:
+        print("gracias por usar nuestro sistema: ")
         break
     else:
-        print("Opcion invalidad")
-        break
+        print("Opcion invalida")
