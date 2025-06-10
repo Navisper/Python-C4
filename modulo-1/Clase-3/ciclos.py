@@ -33,6 +33,9 @@ print(f"\nLa suma total es: {suma}\n")
 
 #ejemplo2
 
+#TO DO Agregar la suma de retiros
+#Agregar la suma de consignaciones
+#Agregar logearse con user y password, solo tener 3 intentos de ingreso, sino debe salir bloqueado y lo saca del sistema
 saldo = 5.000
 
 historial = []
