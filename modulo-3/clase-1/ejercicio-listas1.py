@@ -1,28 +1,33 @@
-#definir un metodo para agregar clientes a una lista
-def agregar_cliente(lista:list, cliente:str):
-    lista.append(cliente)
-    print(f"Cliente '{cliente}' agregado a la lista.")
+def mostrar_clientes(lista_clientes):
+    print("Mis clientes son: ")
+    for cliente in lista_clientes:
+        print(f"- {cliente}")
 
-#definir un metodo para mostrar los clientes de una lista
-def mostrar_clientes(lista):
-    if not lista:
-        print("No hay clientes en la lista.")
+def agregar_cliente(lista_clientes, nombre):
+
+# validacion de datos de entrada
+
+    if isinstance(nombre, str) and 2 <= len(nombre) <= 50:
+        lista_clientes.append(nombre.title())
+        print(f"Cliente agregado: {nombre.title()}")
     else:
-        print("Clientes en la lista:")
-        for i, cliente in enumerate(lista, start=1):
-            print(f"{i}. {cliente}")
+        print("Nombre invalido. El nombre debe tener una logitud mayor a 2 y menor de 50 caracteres")
 
-#definir un metodo modificar un cliente de una lista
-def modificar_cliente(lista, cliente_id:int, nuevo_cliente:str):
-    if 0 < cliente_id <= len(lista):
-        lista[cliente_id - 1] = nuevo_cliente
-        print(f"Cliente modificado a '{nuevo_cliente}'.")
+def modificar_cliente(lista_clientes, indice, nuevo_nombre):
+    if not (isinstance(nuevo_nombre, str) and 2 <= len(nuevo_nombre) <= 50):
+        print("Nombre invalido. El nombre debe tener una logitud mayor a 2 y menor de 50 caracteres")
+        return
+    
+    if 0 <= indice < len(lista_clientes):
+        original = lista_clientes[indice]
+        lista_clientes[indice] = nuevo_nombre.title()
+        print(f"El cliente {original} fue modificado con éxito. Nuevo nombre: {nuevo_nombre.title()}")
+        
     else:
-        print("ID de cliente no válido.")
-
+        print("Indice fuera de rango...")
 
 def main():
-    clientes = []
+    clientes = ["Julian", "Maria"]
     
     while True:
         print("1. Agregar cliente")
@@ -49,4 +54,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
