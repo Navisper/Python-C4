@@ -41,7 +41,7 @@ def main():
         
         mostrar_turnos(turnos)
         
-        insertar_turno(turnos, 1, "Arley", "martes", "mañana")
+        insertar_turno(turnos, 1, "Arleys", "martes", "mañana")
         
         mostrar_turnos(turnos)
         
